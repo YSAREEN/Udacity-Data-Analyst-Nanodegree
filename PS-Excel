@@ -1,0 +1,31 @@
+$Username = "#"
+$Password = "#"
+$SiteCollection = "https://wigov.sharepoint.com/sites/dhs-cares/DDTBLS"
+$workbookpath = "https://wigov.sharepoint.com/sites/dhs-cares/DDTBLS/Deloitte%20Documents/System%20Testing%20Documents/Status%20Report/System%20Testing%20Report.xlsx"
+
+#region Credentials
+[SecureString]$SecurePass = ConvertTo-SecureString $Password -AsPlainText -Force
+[System.Management.Automation.PSCredential]$PSCredentials = New-Object System.Management.Automation.PSCredential($Username, $SecurePass)
+#endregion Credentials
+
+Connect-PnPOnline -Url $SiteCollection -Credentials $PSCredentials
+
+$Excel = new-object -comobject Excel.Application
+$Excel.Visible = $False
+$Excel.DisplayAlerts = $False
+# Open the Excel file
+$excelworkbook = $Excel.workbooks.Open($workbookpath)
+Start-Sleep -Seconds 120
+# This will Refresh All the pivot tables data.
+$Timestamp = Get-Date -DisplayHint Time
+Write-Host ” “$Timestamp “- Refreshing…”
+$excelworkbook.RefreshAll()
+Start-Sleep -Seconds 120
+#While ($excelworkbook.ODBCConnection.Refreshing) {Start-Sleep -Seconds 60}
+$excelworkbook.Save()
+$Excel.Workbooks.Close()
+$Excel.quit()
+Get-Process -Name “*Excel*” | Stop-Process
+
+#Release Excel object from memory
+[System.Runtime.Interopservices.Marshal]::ReleaseComObject($Excel)
