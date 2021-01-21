@@ -3,7 +3,7 @@ This repository will consist of all the projects I developed as part of my Data 
 
 [Graduation Certificate](https://github.com/YSAREEN/Udacity-Data-Analyst-Nanodegree/blob/master/Certificate_Nanodegree.pdf)
 
-Following are the projects wihtin it:
+Following are the projects wihtin it,
 1. [Weather Trends Exploration](https://github.com/YSAREEN/Udacity-Data-Analyst-Nanodegree/tree/master/Explore%20Weather%20Trend): Analyzed local and global temperature data and compared the temperature trends in my area to overall global temperature trends. Used SQL and Excel Spreadsheets for anallysis
 
 2. [2016 US Bike Share Data Exploration](https://github.com/YSAREEN/Udacity-Data-Analyst-Nanodegree/tree/master/Explore%20US%20Bikeshare%20Data) : Used Python to explore and compute descriptive statistics data related to bike share systems for three major cities in the United States—Chicago, New York City, and Washington. 
